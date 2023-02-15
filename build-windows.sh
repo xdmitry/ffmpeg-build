@@ -38,11 +38,11 @@ FFMPEG_CONFIGURE_FLAGS+=(
   
 # Build lzib
 
-  echo "****** building zlib prefixdir=$PREFIXDIR CROSSPREFIX=$CROSS_PREFIX"
+   PREFIXDIR="$PREFIX"
+ echo "****** building zlib prefixdir=$PREFIXDIR CROSSPREFIX=$CROSS_PREFIX"
   get_libz
   cd zlib-1.2.11
   # not running configure here.. but perhaps could/should?
-  PREFIXDIR="$PREFIX"
   make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXDIR/include LIBRARY_PATH=$PREFIXDIR/lib SHARED_MODE=0 PREFIX="$CROSS_PREFIX" install
   cd ..
 
