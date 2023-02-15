@@ -40,6 +40,13 @@ build_lame()
 }
 
 
+get_libz()
+{
+  wget https://github.com/madler/zlib/archive/v1.2.11.tar.gz
+  tar -xf v1.2.11.tar.gz
+  rm v1.2.11.tar.gz
+}
+
 extract_ffmpeg()
 {
 
@@ -66,7 +73,7 @@ echo "running patch:"
 
 # add the env at the top as a comment about what version and patches were applied
 # and are printed when ffmpeg/ffprobe starts (with the rest of the configure flags)
-DATE=`date '+%Y%m%d%H%M%S'`
+DATE=`date '+%Y%m%d-%H%M'`
 echo "Compile date: $DATE"
 BINFO="$FFMPEG_VERSION,compiled_$DATE,github.com/openaudible/ffmpeg-build"
 
