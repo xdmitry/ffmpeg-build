@@ -77,30 +77,14 @@ DATE=`date '+%Y%m%d-%H%M'`
 echo "Compile date: $DATE"
 BINFO="ffmpeg_vers_$FFMPEG_VERSION,compiled_$DATE,builder_github.com/openaudible/ffmpeg-build"
 
-
 FFMPEG_CONFIGURE_FLAGS=(
 --env=OAINFO="$BINFO"
+--disable-everything
 --disable-shared
 --enable-static
 --enable-pic
---disable-doc
---disable-avdevice
 --enable-swscale
---disable-debug
---disable-programs
---disable-encoders
---disable-decoders
---disable-muxers
---disable-demuxers
---disable-protocols
---disable-parsers
---disable-filters
---disable-network
---disable-bsfs
 --enable-zlib
---disable-demuxer=asf
---disable-mediafoundation
---disable-schannel
 --enable-protocol=file
 --enable-muxer=ffmetadata
 --enable-demuxer=ffmetadata
@@ -143,8 +127,6 @@ FFMPEG_CONFIGURE_FLAGS=(
 --enable-filter=null
 --enable-filter=setpts
 --enable-filter=trim
---disable-securetransport
---disable-ffplay
 --enable-ffmpeg
 --enable-ffprobe
 )
