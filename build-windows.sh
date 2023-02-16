@@ -14,8 +14,8 @@ host=x86_64-w64-mingw32
 
 OUTPUT_DIR=artifacts/ffmpeg-$FFMPEG_VERSION-audio-$ARCH-win
 
-BUILD_DIR=$(mktemp -d -p $(pwd) build.XXXXXXXX)
-# TODO: PUT BACK IN trap 'rm -rf $BUILD_DIR' EXIT
+BUILD_DIR="build_win_$ARCH"
+trap 'rm -rf $BUILD_DIR' EXIT
 
 extract_ffmpeg $BUILD_DIR
 
@@ -39,7 +39,7 @@ FFMPEG_CONFIGURE_FLAGS+=(
 # Build lzib
 
    PREFIXDIR="$PREFIX"
- echo "****** building zlib prefixdir=$PREFIXDIR CROSSPREFIX=$CROSS_PREFIX"
+ echo "building zlib prefixdir=$PREFIXDIR CROSSPREFIX=$CROSS_PREFIX"
   get_libz
   cd zlib-1.2.11
   # not running configure here.. but perhaps could/should?

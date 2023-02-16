@@ -1,2 +1,5 @@
 
 artifacts/
+build_*
+*.bz2
+
