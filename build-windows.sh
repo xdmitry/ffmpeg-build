@@ -13,10 +13,17 @@ host=x86_64-w64-mingw32
 : ${ARCH?}
 
 OUTPUT_DIR=artifacts/ffmpeg-$FFMPEG_VERSION-audio-$ARCH-win
+set -e
 
-BUILD_DIR="build_win_$ARCH"
-trap 'rm -rf $BUILD_DIR' EXIT
+BUILD_DIR=$BASE_DIR/build_win_$ARCH
+rm -rf $BUILD_DIR
+mkdir -p $BUILD_DIR
 
+
+# Automatic delete build dir. Optional
+# trap 'rm -rf $BUILD_DIR' EXIT
+
+echo "extract: "
 extract_ffmpeg $BUILD_DIR
 
 cd $BUILD_DIR
