@@ -64,7 +64,7 @@ echo "configure ffmpeg: ${FFMPEG_CONFIGURE_FLAGS[@]}"
 
 
 ./configure "${FFMPEG_CONFIGURE_FLAGS[@]}"
-make
+make -j8
 make install
 
 chown $(stat -c '%u:%g' $BASE_DIR) -R $BASE_DIR/$OUTPUT_DIR
