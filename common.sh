@@ -89,6 +89,8 @@ FFMPEG_CONFIGURE_FLAGS=(
 --enable-libmp3lame
 --enable-protocol=file
 --enable-protocol=pipe
+--enable-protocol=concat
+--enable-protocol=concatf
 --enable-parser=aac
 --enable-parser=ac3
 --enable-demuxer=ffmetadata
