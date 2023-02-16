@@ -121,6 +121,7 @@ FFMPEG_CONFIGURE_FLAGS=(
 --enable-encoder=mjpeg
 --enable-encoder=zlib
 --enable-decoder=png
+--enable-decoder=mp3
 --enable-decoder=aac
 --enable-decoder=mjpeg
 --enable-filter=scale
