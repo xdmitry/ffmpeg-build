@@ -1,28 +1,15 @@
 OpenAudible FFmpeg builds
 ===============================
 
+This fork creates ffmpeg/ffprobe binaries used for OpenAudible, an audibobook management desktop application. 
 
-This fork attempts to add the LibLAME library to the build and also disables more ffmpeg features. 
+These binaries only include the codecs, filters, and muxers that are needed for OpenAudible (mp3/m4b/m4a and cover artwork). 
 
-The project uses GitHub Actions to attempt to build all platforms with every code commit. Linux is working. The original source is also working, but doesn't include any libraries. 
+We add a small patch to allow additional metadata in m4a/m4b tags.  
 
-Need to fix the build scripts for Mac and Windows. 
+We produce binaries for Linux (x86_64), Mac (arm64 and x86_64), and Windows (x86_64).
 
-Current errors are shown in the Actions section for this repo. 
-
-Looking for assistance fixing and testing to produce static binaries for Mac Aarch64, and x86-64 for Linux, Mac and Windows. 
-
-Project is done when the buildActions complete successfully. Will be able to test each build. 
-
-Any assistance welcome! 
-
-Original read me below:
-
-Static audio-only FFmpeg builds
-===============================
-
-This project contains scripts for small static audio-only FFmpeg builds that are used
-for Chromaprint packaging.
+Thank you to AcousticID for their ffmpeg-build github actions. Incredible to build 4 static binaries for ffmpeg in under 6 minutes. 
 
 Building is done using GitHub Actions. You can find the built binaries on the releases page.
 
