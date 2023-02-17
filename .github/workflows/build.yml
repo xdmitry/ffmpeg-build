@@ -45,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -y && \
-          sudo apt-get install -y yasm mingw-w64 subversion libz-mingw-w64-dev
+          sudo apt-get install -y yasm mingw-w64 subversion 
       - name: Build
         run: ./build-windows.sh
       - name: Archive production artifacts
@@ -83,7 +83,7 @@ jobs:
       - package-windows
       - package-macos
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           path: artifacts/
       - name: Make tarballs
