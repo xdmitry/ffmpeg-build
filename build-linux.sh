@@ -74,17 +74,6 @@ PREFIX=$BASE_DIR/$OUTPUT_DIR
 FFMPEG_CONFIGURE_FLAGS+=(--prefix=$PREFIX)
 
 
- # build zlib.  this is only working on x86_64
-
-  wget https://github.com/madler/zlib/archive/v1.2.11.tar.gz
-  tar -xf v1.2.11.tar.gz
-  cd zlib-1.2.11
-  ./configure --prefix="$PREFIX"
-  make
-  make install
-  cd ..
-
-
 
 do_svn_checkout https://svn.code.sf.net/p/lame/svn/trunk/lame lame_svn
   cd lame_svn

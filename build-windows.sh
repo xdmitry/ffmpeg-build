@@ -27,7 +27,6 @@ echo "extract: "
 extract_ffmpeg $BUILD_DIR
 
 cd $BUILD_DIR
-# tar --strip-components=1 -xf $BASE_DIR/$FFMPEG_TARBALL
 
 
 PREFIX=$BASE_DIR/$OUTPUT_DIR
@@ -43,18 +42,6 @@ FFMPEG_CONFIGURE_FLAGS+=(
 
 )
   
-# Build lzib
-
-   PREFIXDIR="$PREFIX"
- echo "building zlib prefixdir=$PREFIXDIR CROSSPREFIX=$CROSS_PREFIX"
-  get_libz
-  cd zlib-1.2.11
-  # not running configure here.. but perhaps could/should?
-  make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXDIR/include LIBRARY_PATH=$PREFIXDIR/lib SHARED_MODE=0 PREFIX="$CROSS_PREFIX" install
-  cd ..
-
-
-
 # Build lame
 
 do_svn_checkout https://svn.code.sf.net/p/lame/svn/trunk/lame lame_svn

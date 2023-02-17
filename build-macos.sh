@@ -83,7 +83,7 @@ echo "configure ffmpeg: ${FFMPEG_CONFIGURE_FLAGS[@]}"
 
 perl -pi -e 's{HAVE_MACH_MACH_TIME_H 1}{HAVE_MACH_MACH_TIME_H 0}' config.h
 
-make #  V=1
+make -j8 #  V=1
 make install
 find $BASE_DIR/$OUTPUT_DIR | grep bin
 chown -R $(stat -f '%u:%g' $BASE_DIR) $BASE_DIR/$OUTPUT_DIR

@@ -25,27 +25,6 @@ do_svn_checkout() {
   fi
 }
 
-# Args: configure options, configure env
-# Not yet used.
-build_lame()
-{
-  do_svn_checkout https://svn.code.sf.net/p/lame/svn/trunk/lame lame_svn
-  cd lame_svn
-    echo "Compiling lame with config: $1"
-    $2 ./configure "$1"
-    make -j8
-    make install
-  cd ..
-  echo "compiled LAME... $PREFIX "
-}
-
-
-get_libz()
-{
-  wget https://github.com/madler/zlib/archive/v1.2.11.tar.gz
-  tar -xf v1.2.11.tar.gz
-  rm v1.2.11.tar.gz
-}
 
 extract_ffmpeg()
 {
@@ -73,7 +52,7 @@ echo "running patch:"
 
 # add the env at the top as a comment about what version and patches were applied
 # and are printed when ffmpeg/ffprobe starts (with the rest of the configure flags)
-DATE=`date '+%Y%m%d-%H%M'`
+DATE=`date '+%Y%m%d'`
 echo "Compile date: $DATE"
 BINFO="ffmpeg_vers_$FFMPEG_VERSION,compiled_$DATE,builder_github.com/openaudible/ffmpeg-build"
 
@@ -85,7 +64,6 @@ FFMPEG_CONFIGURE_FLAGS=(
 --enable-static
 --enable-pic
 --enable-swscale
---enable-zlib
 --enable-libmp3lame
 --enable-protocol=file
 --enable-protocol=pipe
@@ -115,11 +93,9 @@ FFMPEG_CONFIGURE_FLAGS=(
 --enable-muxer=image2
 --enable-encoder=libmp3lame
 --enable-encoder=aac
---enable-encoder=aac_fixed
 --enable-encoder=ac3
 --enable-encoder=png
 --enable-encoder=mjpeg
---enable-encoder=zlib
 --enable-decoder=png
 --enable-decoder=mp3
 --enable-decoder=aac
