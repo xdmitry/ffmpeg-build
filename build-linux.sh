@@ -85,6 +85,17 @@ do_svn_checkout https://svn.code.sf.net/p/lame/svn/trunk/lame lame_svn
 echo "compiled LAME... " 
 
 
+ # build zlib.  this is only working on x86_64
+
+  extract_zlib
+  cd zlib-1.2.11
+  ./configure --prefix="$PREFIX"
+  make
+  make install
+  cd ..
+
+
+
 FFMPEG_CONFIGURE_FLAGS+=(--extra-cflags="-I$PREFIX/include")
 FFMPEG_CONFIGURE_FLAGS+=(--extra-ldflags="-L$PREFIX/lib")
 

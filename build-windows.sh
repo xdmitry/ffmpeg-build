@@ -53,6 +53,16 @@ do_svn_checkout https://svn.code.sf.net/p/lame/svn/trunk/lame lame_svn
   cd ..
 echo "compiled LAME... "
 
+# Build lzib
+
+  PREFIXDIR="$PREFIX"
+  echo "building zlib prefixdir=$PREFIXDIR CROSSPREFIX=$CROSS_PREFIX"
+  extract_zlib
+  cd zlib-1.2.11
+  # not running configure here.. but perhaps could/should?
+  make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXDIR/include LIBRARY_PATH=$PREFIXDIR/lib SHARED_MODE=0 PREFIX="$CROSS_PREFIX" install
+  cd ..
+
 
 echo "configure ffmpeg: ${FFMPEG_CONFIGURE_FLAGS[@]}"
 

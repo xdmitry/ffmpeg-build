@@ -25,6 +25,12 @@ do_svn_checkout() {
   fi
 }
 
+extract_zlib()
+{
+  wget https://github.com/madler/zlib/archive/v1.2.11.tar.gz
+  tar -xf v1.2.11.tar.gz
+  rm v1.2.11.tar.gz
+}
 
 extract_ffmpeg()
 {
@@ -65,6 +71,7 @@ FFMPEG_CONFIGURE_FLAGS=(
 --enable-pic
 --enable-swscale
 --enable-libmp3lame
+--enable-zlib
 --enable-protocol=file
 --enable-protocol=pipe
 --enable-protocol=concat
