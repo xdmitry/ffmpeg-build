@@ -60,7 +60,7 @@ PREFIX=$BASE_DIR/$OUTPUT_DIR
 
 do_svn_checkout https://svn.code.sf.net/p/lame/svn/trunk/lame lame_svn
   cd lame_svn
-  LAMEC="--enable-nasm --disable-decoder --enable-frontend --prefix=$PREFIX --enable-static --disable-shared --host=$host --enable-cross-compile --target=$TARGET"
+  LAMEC="--enable-nasm --disable-decoder --disable-frontend --prefix=$PREFIX --enable-static --disable-shared --host=$host --enable-cross-compile --target=$TARGET"
   echo "*** ./configure $LAMEC"
 
   CFLAGS="-target $TARGET -I$PREFIX/include " ./configure $LAMEC
