@@ -19,7 +19,7 @@ jobs:
         run: |
           sudo yum config-manager --set-enabled powertools && \
           sudo yum update -y && \
-          sudo yum install -y subversion yasm
+          sudo yum install -y subversion yasm wget
       - name: Install ARM64 compiler
         if: env.ARCH == 'arm64'
         run: |
