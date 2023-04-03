@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo yum update -y && \
-          sudo yum install -y subversion yasm wget
+          sudo yum install -y subversion yasm nasm wget
       - name: Install ARM64 compiler
         if: env.ARCH == 'arm64'
         run: |
