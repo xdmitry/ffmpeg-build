@@ -17,8 +17,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: |
-          sudo apt-get update -y && \
-          sudo apt-get install -y yasm subversion
+          sudo yum update -y && \
+          sudo yum install -y subversion
       - name: Install ARM64 compiler
         if: env.ARCH == 'arm64'
         run: |
@@ -77,7 +77,7 @@ jobs:
           path: artifacts/
 
   release:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs:
       - package-linux
       - package-windows
